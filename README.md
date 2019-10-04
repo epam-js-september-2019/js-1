@@ -1,6 +1,8 @@
 # JS-1
 ## Functions
 
+## Deadline 11.10 EOD
+
 #### Important: You shouldn't use global variables
 
 ##### 1) Write a function splitAndMerge
