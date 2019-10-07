@@ -1,7 +1,7 @@
 # JS-1
 ## Functions
 
-## Deadline 11.10 EOD
+## Deadline 14.10 EOD
 
 #### Important: You shouldn't use global variables
 
