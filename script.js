@@ -29,8 +29,9 @@ function toCamelCase(str){
 	function toCamel(sep){
 		return str
 					.split(sep)
-					.reduce((newStr, current, index, str) => 
-						index == 0 ? str[0] : newStr + current[0].toUpperCase() + current.slice(1), "");
+					.reduce((newStr, current, index, str) =>
+						index == 0 ? str[0] : newStr + current[0].toUpperCase() + current.slice(1)
+					,"");
 	}
 }
 console.log("First mode: toCamelCase('the-stealth-warrior'): ", toCamelCase("the-stealth-warrior"));
@@ -46,7 +47,7 @@ function toCamelCase1(str){
 	function toCamel1(sep){
 		return str
 					.split(sep)
-					.map((current, index) => 
+					.map((current, index) =>
 						index == 0 ? current : current[0].toUpperCase() + current.slice(1))
 					.join("")
 	}
@@ -69,7 +70,7 @@ function reverse(str) {
 function reverse1(str) {
 	return str
 				.split(" ")
-				.reduce((newStr, current) => 
+				.reduce((newStr, current) =>
 					newStr + " " + current.split("").reverse().join("")
 				,"");
 }
@@ -91,7 +92,7 @@ function stringExpansion(str) {
 				str.slice(1)
 			}
 	});
-	
+
 	return newStr;
 }
 console.log("stringExpansion('3D2a5d2f'): ", stringExpansion('3D2a5d2f'));
@@ -121,10 +122,26 @@ function smallest1(...arr) {
 	});
 	return min;
 }
-console.log("First method : largest(2, 0.1, -5, 100, 3):", largest(2, 0.1, -5, 100, 3));
-console.log("First method : smallest(2, 0.1, -5, 100, 3):", smallest(2, 0.1, -5, 100, 3));
-console.log("Second method : largest(2, 0.1, -5, 100, 3):", largest1(2, 0.1, -5, 100, 3));
-console.log("Second method : smallest(2, 0.1, -5, 100, 3):", smallest1(2, 0.1, -5, 100, 3));
+console.log("First mode : largest(2, 0.1, -5, 100, 3):", largest(2, 0.1, -5, 100, 3));
+console.log("First mode : smallest(2, 0.1, -5, 100, 3):", smallest(2, 0.1, -5, 100, 3));
+console.log("Second mode : largest(2, 0.1, -5, 100, 3):", largest1(2, 0.1, -5, 100, 3));
+console.log("Second mode : smallest(2, 0.1, -5, 100, 3):", smallest1(2, 0.1, -5, 100, 3));
+//------------------------------------------------
+console.log('7) - function transform that will return value from a base array');
+function transform(array){
+	const value = [];
+	array.forEach(function(item, index){
+		value[index] = function(){
+			return item;
+		}
+	});
+
+	return value;
+}
+const baseArray = [10, 20, 30, 40, 50];
+const newArray = transform(baseArray);
+console.log("newArray[3](): ", newArray[3]());
+console.log("newArray[4](): ", newArray[4]());
 //------------------------------------------------
 console.log('8) - sum');
 
@@ -155,6 +172,7 @@ console.log("countDown(0):"); countDown(0);
 console.log("countDown(-2):"); countDown(-2);
 console.log("countDown(5):"); countDown(5);
 //------------------------------------------------
+//10) - a polyfill for a .bind() function
 Function.prototype.myBind = function (context) {
   let that = this;
   return function () {
@@ -168,4 +186,4 @@ var bound = addPropToNumber.myBind({ prop: 9 });
 setTimeout(() => {
 	console.log('10) - a polyfill for a .bind() function');
 	console.log("bound(1): ", bound(1))
-}, 7000); // 10
+}, 7000);
