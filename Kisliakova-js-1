@@ -1,0 +1,158 @@
+//Kisliakova Tatsiana
+
+//1. function splitAndMerge
+
+function splitAndMerge(str, sp){
+    var arrSplit = str.split(" ");
+    var resultArr = [];
+    var i = 0;
+    arrSplit.forEach(function(element){
+        resultArr[i] = element.split("").join(sp);
+        i++;
+    });
+return resultArr.join(" ");
+}
+
+splitAndMerge("My name is John"," ");  // return "M y n a m e i s J o h n"
+splitAndMerge("Hello World!",",");  //return "H,e,l,l,o W,o,r,l,d,!"
+
+//2. function convert
+
+function convertHashArray(hash){
+
+    var resultArr = [];
+    for (var key in hash){
+        resultArr.push([key, hash[key]]);
+    }
+    return resultArr;
+}
+
+convertHashArray({name: 'Jeremy', age: 24, role: 'Software Engineer'}); 
+
+//3. function convertCamelCase
+
+function convertCamelCase(sentense){
+    return sentense.replace(/_.|-./g, function(letter, index) {
+        return index == 0 ? letter.toLowerCase() : letter.substr(1).toUpperCase();
+      });
+}
+
+convertCamelCase("the-stealth-warrior");
+convertCamelCase("The_Stealth_Warrior");
+
+//4. function reverseWord
+
+function reverseWord(sentense){
+    var resultArr = [];
+    var arrSplit = sentense.split(' ');
+
+    var i = 0;
+    arrSplit.forEach(function(element){
+        resultArr[i] = element.split("").reverse().join("");
+        i++;
+    });
+return resultArr.join(" ");
+}
+
+reverseWord(" A fun little challenge! ");
+
+//5. function stringExpansion 
+
+function stringExpansion (sentense){
+    return sentense.replace(/(\d)([^\d]*)/g, function(match, count, letter) {
+        return letter.repeat(count);
+    })
+}
+stringExpansion('3D2a5d2f');
+stringExpansion('3d332f2a');
+
+//6. largest and smallest functions
+
+function largest(){
+    var max = 0;
+    for (var i = 0; i < arguments.length; i++){
+        if (arguments[i] > max){
+            max = arguments[i];
+        } 
+    }
+    return max;
+}
+
+largest(2, 0.1, -5, 100, 3);
+
+function smallest(){
+    var min = 0;
+    for (var i = 0; i < arguments.length; i++){
+        if (arguments[i] < min){
+            min = arguments[i];
+        } 
+    }
+    return min;
+}
+
+smallest(2, 0.1, -5, 100, 3);
+
+//7. transform function
+
+function transform(array) {
+    return array.map(function(element) {
+        return function() {
+            return element;
+        };
+    });
+}
+
+//8. sum function
+function sum(num) {
+    if(arguments.length === 1) {
+        return num;
+    } else {
+        return num + sum.apply(null,[].slice.call(arguments,1));
+    }
+}
+
+sum(1,3,5,7);
+
+//9. countDown function
+
+function countDown(num) {
+    var timer = setInterval(function() {
+        console.log(num);
+        num--;
+        if (num < 0) clearInterval(timer);
+    }, 1000);
+}
+
+countDown(3);
+
+//10. polyfill for a .bind() function
+Function.prototype.myBind = function () {
+    var func = this,
+        args = [].slice.call(arguments),
+        context = args.shift();
+    return function () {
+        return func.apply(context, args.concat([].slice.call(arguments)));
+    };
+};
+
+function addPropToNumber(number) {
+    return this.prop + number; 
+}
+    var bound = addPropToNumber.myBind({ prop: 9 });
+
+bound(1);
+
+//check
+console.log(splitAndMerge("My name is John"," "));  
+console.log(splitAndMerge("Hello World!",","));
+console.log(convertHashArray({name: 'Jeremy', age: 24, role: 'Software Engineer'}));
+console.log(convertCamelCase("the-stealth-warrior"));
+console.log(convertCamelCase("The_Stealth_Warrior"));
+console.log(reverseWord(" A fun little challenge! "));
+console.log(stringExpansion('3D2a5d2f'));
+console.log(stringExpansion('3d332f2a'));
+console.log(largest(2, 0.1, -5, 100, 3));
+console.log(smallest(2, 0.1, -5, 100, 3));
+console.log(sum(1,3,5,7));
+console.log(countDown(3));
+console.log(bound(1));
