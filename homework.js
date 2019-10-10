@@ -20,7 +20,7 @@ const hashToArr = (obj) => {
 
 //console.log(hashToArr({name: 'Jeremy', age: 24, role: 'Software Engineer'}));
 
-/*      TASK 3 SPLIT AND MERGE      */
+/*      TASK 3 CAMEL CASING      */
 
 const toCamelCasing = (str) => {
     let a = str.split(str[str.search(/(_|-)/)]);
@@ -29,10 +29,23 @@ const toCamelCasing = (str) => {
 
 //console.log(toCamelCasing('Test_gdf_sas'));
 
-/*      TASK 4 SPLIT AND MERGE      */
+/*      TASK 4 WORD REVERSE      */
 
 const wordReverse = (str) => {
     return str.split(' ').map(item => item.split('').reverse().join('')).join(' ');
 };
 
 //console.log(wordReverse(' A fun little challenge!'));
+
+/*      TASK 5 STRING EXPANSION      */
+
+const stringExpansion = (str) => {
+    let result = '';
+    for(let i = 0; i<str.length; i++) {
+        result += str[i].repeat(str[i-1]);
+    }
+    result = result.replace(/[0-9]/g, '');
+    return result.length !== 0 ? result : str;
+};
+
+//console.log(stringExpansion('abcde'));
