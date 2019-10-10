@@ -8,6 +8,17 @@ const splitAndMerge = (str, sp) => {
 console.log("splitAndMerge('My name is John',' '): ", splitAndMerge('My name is John', ' '));
 console.log("splitAndMerge('Hello World!',','): ", splitAndMerge('Hello World!', ','));
 
+const splitAndMergeSecond = (str, sp) => {
+  const words = str.split(' ');
+  const wordsIntoCharacters = words.map((word) => word.split(''));
+  const charactersMergedWithSp = wordsIntoCharacters.map((word) => word.map((character) => `${character}${sp}`));
+  const backIntoWords = charactersMergedWithSp.map((characters) => characters.join(''));
+  return backIntoWords.join(' ');
+};
+
+console.log("splitAndMergeSecond('My name is John',' '): ", splitAndMergeSecond('My name is John', ' '));
+console.log("splitAndMergeSecond('Hello World!',','): ", splitAndMergeSecond('Hello World!', ','));
+
 const convert = (hash) => Object.entries(hash);
 
 console.log("convert({name: 'Jeremy', age: 24, role: 'Software Engineer'}: ", convert({ name: 'Jeremy', age: 24, role: 'Software Engineer' }));
