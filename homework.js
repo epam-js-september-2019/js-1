@@ -4,7 +4,7 @@ const splitAndMerge = (str, delim) => {
     return str.replace(' ','').split('').join(delim);
 };
 
-console.log(splitAndMerge('Hello world', ','));
+//console.log(splitAndMerge('Hello world', ','));
 
 /*      TASK 2 HASH TO ARR      */
 
@@ -18,7 +18,7 @@ const hashToArr = (obj) => {
     return result;
 };
 
-console.log(hashToArr({name: 'Jeremy', age: 24, role: 'Software Engineer'}));
+//console.log(hashToArr({name: 'Jeremy', age: 24, role: 'Software Engineer'}));
 
 /*      TASK 3 SPLIT AND MERGE      */
 
@@ -27,6 +27,12 @@ const toCamelCasing = (str) => {
     return a.map(item => item[0].toLocaleUpperCase() + item.substr(1)).join('');
 };
 
-console.log(toCamelCasing('Test_gdf_sas'));
+//console.log(toCamelCasing('Test_gdf_sas'));
 
 /*      TASK 4 SPLIT AND MERGE      */
+
+const wordReverse = (str) => {
+    return str.split(' ').map(item => item.split('').reverse().join('')).join(' ');
+};
+
+//console.log(wordReverse(' A fun little challenge!'));
