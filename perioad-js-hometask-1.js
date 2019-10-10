@@ -94,12 +94,29 @@ const smallest = (...numbers) => (
 
 console.log('smallest(2, 0.1, -5, 100, 3):', smallest(2, 0.1, -5, 100, 3));
 
-const transform = (arr) => (index) => arr[index];
+const transform = (array) => {
+  const iter = (iterArray, acc) => {
+    if (iterArray.length === 0) {
+      return acc;
+    }
+    const [current, ...rest] = iterArray;
+    const newAcc = [...acc, (() => current)];
+    return iter(rest, newAcc);
+  };
+  return iter(array, []);
+};
 
 const baseArray = [10, 20, 30, 40, 50];
 const newArray = transform(baseArray);
-console.log('newArray(3): ', newArray(3));
-console.log('newArray(4): ', newArray(4));
+console.log('newArray[3](): ', newArray[3]());
+console.log('newArray[4](): ', newArray[4]());
+
+const transformWithCurrying = (arr) => (index) => arr[index];
+
+const baseArrayWithCurrying = [10, 20, 30, 40, 50];
+const newArrayWithCurrying = transformWithCurrying(baseArrayWithCurrying);
+console.log('newArrayWithCurrying(3): ', newArrayWithCurrying(3));
+console.log('newArrayWithCurrying(4): ', newArrayWithCurrying(4));
 
 const sum = (...numbers) => {
   if (numbers.length === 0) {
