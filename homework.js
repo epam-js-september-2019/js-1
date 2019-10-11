@@ -65,6 +65,24 @@ const largest = function(...args) {
 //console.log(largest(1,-0.5, 100 ,4, 25));
 //console.log(smallest(1,-0.5, 100 ,4, 25));
 
+/*      TASK 8 SUM      */
+
+const sum = function (...arg) {
+    let resultSum = 0;
+    let index = 0;
+    const partOfSum = (number) => {
+      if(index !== arg.length) {
+          resultSum+=number;
+          index++;
+          partOfSum(arg[index]);
+      }
+    };
+    partOfSum(arg[index]);
+    return resultSum;
+};
+// console.log(sum(1,2,3,4));
+
+
 /*      TASK 9 COUNT DOWN      */
 
 const countDown = (arg) => {
