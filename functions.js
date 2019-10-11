@@ -167,8 +167,8 @@ console.log(newArray[3]()); // should return 40
 console.log(newArray[4]()); // should return 50
   
 console.log(sum(1,3,5,7));//8
-console.log(countDown(5));//9
-console.log(bound(1)); //10
+countDown(5);//9
+console.log(bound(10)); //10
 }
 
 test();
