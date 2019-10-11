@@ -65,6 +65,22 @@ const largest = function(...args) {
 //console.log(largest(1,-0.5, 100 ,4, 25));
 //console.log(smallest(1,-0.5, 100 ,4, 25));
 
+/*      TASK 7 TRANSFORM      */
+const transform = (arg) => {
+    let arr = [];
+    for(let i = 0; i < arg.length; i++) {
+        (function() {
+            return arr[i] = function() { return arg[i]; }
+        }());
+    }
+    return arr;
+};
+
+const baseArray = [10, 20, 30, 40, 50];
+const newArray = transform(baseArray);
+//console.log(newArray[1]());
+
+
 /*      TASK 8 SUM      */
 
 const sum = function (...arg) {
@@ -94,3 +110,5 @@ const countDown = (arg) => {
     }
 };
 // countDown(3);
+
+/*      TASK 10 myBind      */
