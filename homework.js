@@ -112,3 +112,13 @@ const countDown = (arg) => {
 // countDown(3);
 
 /*      TASK 10 myBind      */
+
+Function.prototype.myBind = function (arg) {
+    let t = this;
+    return function () {
+        return t.apply(arg, arguments);
+    };
+};
+function addPropToNumber(number) { return this.prop + number; }
+var bound = addPropToNumber.myBind({ prop: 10 });
+//console.log(bound(1));
