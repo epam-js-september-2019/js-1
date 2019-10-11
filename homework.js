@@ -49,3 +49,18 @@ const stringExpansion = (str) => {
 };
 
 //console.log(stringExpansion('abcde'));
+
+/*      TASK 6 SMALLEST LARGEST      */
+
+const arraySort = function (arg) {
+    return arg.sort((a,b)=> a-b);
+};
+const smallest = function(...args) {
+    return arraySort(args)[0];
+};
+
+const largest = function(...args) {
+    return arraySort(args)[args.length - 1];
+};
+//console.log(largest(1,-0.5, 100 ,4, 25));
+//console.log(smallest(1,-0.5, 100 ,4, 25));
