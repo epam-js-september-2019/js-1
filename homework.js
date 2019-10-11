@@ -64,3 +64,15 @@ const largest = function(...args) {
 };
 //console.log(largest(1,-0.5, 100 ,4, 25));
 //console.log(smallest(1,-0.5, 100 ,4, 25));
+
+/*      TASK 9 COUNT DOWN      */
+
+const countDown = (arg) => {
+    if(arg > -1) {
+        setTimeout(function () {
+            console.log(arg);
+            countDown(arg - 1);
+        }, 1000);
+    }
+};
+// countDown(3);
