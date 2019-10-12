@@ -2,7 +2,7 @@
 'use strict';
 
 /**
- * Divide the sentence into chars with the specified separator.
+ * Divides the sentence into chars with the specified separator ignoring space chars
  * @param {string} string - is a sentence.
  * @param {string} separator - a char as separator.
  * @return {string}
@@ -11,6 +11,18 @@ const splitAndMerge = (string, separator) =>
   string.split(``)
       .filter((char) => char !== ` `)
       .join(separator);
+
+// Подправил реализацию, так больше соответствует ТЗ:
+/**
+ * First divides the sentence into words(Use separator space) and then divides each word into characters with the specified separator. At last merges all the words(Use separator space) and return it
+ * @param {string} string - is a sentence.
+ * @param {string} separator - a char as separator.
+ * @return {string}
+ */
+const splitAndMerge2 = (string, separator) =>
+string.split(` `)
+  .map((word) => word.split('').join(separator))
+  .join(' ');
 
 /**
  * returns an array of a given object's own enumerable string-keyed property [key, value] pairs
@@ -183,6 +195,8 @@ Function.prototype.myBind = function (context, ...args) {
   console.log(`_____________TESTS______________`);
   console.log(`splitAndMerge("My name is John"," ") result:`);
   console.log(splitAndMerge("My name is John"," "));
+  console.log(`splitAndMerge2("Hello World!",",") result:`);
+  console.log(splitAndMerge2("Hello World!",","));
   console.log(`getArrayFromObject({name: 'Jeremy', age: 24, role: 'Software Engineer'}) result:`);
   console.log(getArrayFromObject({name: 'Jeremy', age: 24, role: 'Software Engineer'}));
   console.log(`toCamelCase("the-stealth_warrior") result:`);
