@@ -4,12 +4,19 @@ Example:
 countDown(3); // 3 2 1 0 */
 
 function countDown(i) {
-    if (i < 0) {//условие остановки
-        return;  
-    } 
-    else {//запуск рекурсии
-        console.log(i);
-        i--;
-        setTimeout(countdown,1000,(i)); 
+    if (typeof i==='number'){
+        if (i < 0) {//условие остановки
+            return;  
+        } 
+        else {//запуск рекурсии
+            console.log(i);
+            i--;
+            setTimeout(countDown,1000,(i)); 
+        }
     }
+    else {
+        console.log("Argument type should be: Number");
+        
+    }
+
 }
