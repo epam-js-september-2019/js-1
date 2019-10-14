@@ -1,0 +1,122 @@
+// 1 задание
+
+function splitAndMerge(str, sp) {
+    let mergeWords = [];
+    let words = str.split(' ');
+    words.forEach((item, index) => mergeWords[index] = item.split('').join(sp));
+    return mergeWords.join(' ');
+}
+
+// 2 задание
+
+let convertHashInArray = (object) => Object.entries(object);
+
+// 3 задание. Вариант через поиск слов
+
+function toCamelCase(string) {
+    let arrWord = [];
+    let letter = [];
+    let word = string.match(/[A-Za-z0-9]+/);
+    let oldString = string.replace(word, '');
+    let camelCase = word;
+    word = oldString.match(/[A-Za-z0-9]+/);
+    while (word != null) {
+        oldString = oldString.replace(word, '');
+        arrWord = word[0].split('');
+        letter =  arrWord.shift().toUpperCase();
+        arrWord.unshift(letter);
+        arrWord = arrWord.join('');
+        camelCase += arrWord;
+        word = oldString.match(/[A-Za-z0-9]+/);
+    }
+    return camelCase;
+}
+
+// 3 задание. Вариант после "подумать подольше" через поиск разделителей
+
+function toCamelCase(string) {
+    let separator = /[-_]+/g;
+    let words = string.split(separator);
+    console.log(words);
+    for(let i = 1; i < words.length; i++) {
+        words[i] = words[i].charAt(0).toUpperCase() + words[i].slice(1);
+    }
+    return words.join('');
+}
+
+// 4 задание
+
+function reverseWord(string) {    
+    let reverseString = [];
+    string = string.split(' ');
+    string.forEach((word) => {
+        word = word.split('').reverse().join('');
+        reverseString.push(word);
+    })
+    return reverseString.join(' ');
+}
+
+// 5 задание
+
+function stringExpansion(string) {
+    let combo = string.match(/\d[A-Za-z]+/g);
+    let newCombo = [];
+    combo.forEach((item) => {
+        function change(num, char, ...chars) {
+            return item = char.repeat(num) + chars;
+        }
+        change(item[0], item[1], item.slice(2));
+        newCombo.push(item);
+    })   
+    return newCombo.join('');  
+}
+
+// 6 задание
+
+function largest(...numbers) {
+    let max = 0;
+    numbers.forEach((num) => {
+        max = (num > max) ? num : max;
+    })
+    return max;
+}
+
+function smallest(...numbers) {
+    let min = 0;
+    numbers.forEach((num) => {
+        min = (num < min) ? num : min;
+    })
+    return min;
+}
+
+// 7 задание
+
+function transform(array) {
+    return array.map((item) => () => item);
+}
+
+// 8 задание
+
+const sum = (...numbers) => {
+    return (numbers.length === 0) ? 0 : numbers[0] + sum(...numbers.slice(1));
+}
+
+// 9 задание
+
+function countDown (firsNumber) {
+    if (firsNumber >= 0) {
+      console.log(firsNumber--);
+      setTimeout(() => {
+        countDown(firsNumber);
+      }, 1000);
+    }
+}
+
+// 10 задание
+
+Function.prototype.myBind = function (context) { 
+    let self = this;
+    return function() {
+        return self.apply(context, arguments);
+    }
+}
