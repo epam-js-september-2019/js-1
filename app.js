@@ -17,16 +17,7 @@ const splitAndMerge = function (str, sp){
  * @return {array[]} - array of arrays that represents the hash
  */
 const convert = function(hash){
-	let res = [];
-
-	for (key in hash){
-	  let _res = [];
-	  _res.push(key);
-	  _res.push(hash[key]);
-	  res.push(_res);
-	}
-
-	return res;
+	return Object.entries(hash);
 }
 
 /**
