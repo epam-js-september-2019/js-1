@@ -78,12 +78,22 @@ function countDown(num) {
     setTimeout(() => { clearInterval(timerCount)}, num*1000);
 } //9
 
-Function.prototype.myBind = function (context) {
-    var clone = {};
-    clone.__proto__ = context;
-    clone.temp = this;
-    return function (arg) {
-        return clone.temp(arg)
+// Function.prototype.myBind = function (context) {
+//     var clone = {};
+//     clone.__proto__ = context;
+//     clone.temp = this;
+//     return function (arg) {
+//         return clone.temp(arg)
+//     };
+// } //10
+
+
+//Исправил решение 10 задачи, добавил привязку аргументов.
+
+Function.prototype.myBind = function (context, ...args) {
+    var that = this;
+    return function (...anotherArgs) {
+        return that.apply(context, [...anotherArgs, ...args])
     };
 } //10
 
